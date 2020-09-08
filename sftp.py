@@ -1,18 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[10]:
-
 
 import datetime
 import pysftp
 import os,shutil
 from pathlib import Path
 import pathlib
-
-
-# In[11]:
-
 
 #log function to log the message
 def log(message,filename):
@@ -37,10 +31,6 @@ def moveFileToSuccess(filename,local_path):
         print(e)
         log("Failed to move to Success folder",file_name)
 
-
-# In[13]:
-
-
 def uploadfile():
     #remote log url , username, password and port num 
     host = 'localhost'
@@ -55,7 +45,7 @@ def uploadfile():
     #local path where .py file is located 
     local_path=str(pathlib.Path().absolute())
     #remote path where you want to upload the file 
-    remote_path_touploadfile='Downloads/Hrihsikesh Study'
+    remote_path_touploadfile='Downloads'
     for file_name in files:
         #file path from dataupload folder
         local_file_path=local_path+"/datauploads/"+file_name
@@ -84,10 +74,6 @@ def uploadfile():
                 print(e)
                 log("Failed to upload",file_name)
                 moveFileToFailure(file_name,local_path)
-
-
-# In[ ]:
-
 
 uploadfile()
 
